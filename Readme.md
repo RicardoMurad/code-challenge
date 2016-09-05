@@ -40,4 +40,10 @@ A API está documentada utilizando o Swagger.
 Lá é possível verificar os endpoints e fazer testes.
 Após subir o projeto acessar o link:
     
-    <http://localhost:8080/swagger-ui.html>
+<http://localhost:8080/swagger-ui.html>
+
+Qualquer dúvida estou a disposição!!
+
+<http://ricardomurad.com>
+
+ricardomurad at gmail.com
