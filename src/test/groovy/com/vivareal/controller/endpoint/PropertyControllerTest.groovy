@@ -35,7 +35,7 @@ class PropertyControllerTest extends Specification {
 
     MockMvc mockMvc
 
-    def "should save property and return json response"() {
+    def "should save property and return json response with created status code"() {
 
         given: "a user want to save the following json"
 
@@ -62,7 +62,8 @@ class PropertyControllerTest extends Specification {
         when: "user perform request"
 
          def result = this.mockMvc.perform(
-                    get("/properties")
+                    post("/properties")
+                            .contentType(MediaType.APPLICATION_JSON)
                             .content(json)
                             .accept(MediaType.APPLICATION_JSON))
 
