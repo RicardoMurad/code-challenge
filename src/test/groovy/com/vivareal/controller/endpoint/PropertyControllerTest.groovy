@@ -152,19 +152,18 @@ class PropertyControllerTest extends Specification {
         when(assembler.toResource(any())).thenCallRealMethod();
 
         given: "user have a id 1L"
-        def id = 1L
+            def id = 1L
 
         when: "user perform request"
 
-        def result = this.mockMvc.perform(
-                get("/properties/${id}")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
+            def result = this.mockMvc.perform(
+                    get("/properties/${id}")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .accept(MediaType.APPLICATION_JSON))
 
         then: "Should return json response with FOUND status"
-        result
+            result
                 .andExpect(status().isNotFound())
-
     }
 
     void setup() {
