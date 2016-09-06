@@ -7,6 +7,7 @@
     - Maven
     - Java 8
     - git
+    - Porta 8080 livre
     
 #### Passos
 
