@@ -24,7 +24,6 @@ public class PropertyRequest {
     private Long yPosition;
 
     @NotNull
-    @Range(min = 1 , max = 9250000)
     private BigDecimal price;
 
     @NotNull

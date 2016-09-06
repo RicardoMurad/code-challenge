@@ -9,12 +9,17 @@ import javax.validation.Validator;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 import static java.lang.Long.valueOf;
 
 /**
- *  Just to simulate a real repository
+ *  DISCLAIMER:
+ *
+ *  This class is just to simulate a real repository
+ *       - Not thread safe !
+ *  ricardo murad
  */
 @Repository
 public class FakePropertyRepository implements PropertyRepository {
@@ -26,7 +31,7 @@ public class FakePropertyRepository implements PropertyRepository {
 
     @PostConstruct
     public void init() {
-        this.data = new HashSet<>();
+        this.data = ConcurrentHashMap.newKeySet();
     }
 
     @Override
