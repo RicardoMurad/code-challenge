@@ -1,6 +1,7 @@
 package com.vivareal.service;
 
 import com.vivareal.model.Property;
+import com.vivareal.persistence.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +14,19 @@ import java.util.Set;
 @Service
 public class PropertyService {
 
+    @Autowired
+    private PropertyRepository repository;
+
     public Property save(Property property) {
-        property.setId(1L);
-        return property;
+        return repository.save(property);
     }
 
     public Optional<Property> findById(Long id) {
-        return Optional.empty();
+        return repository.findById(id);
     }
 
-    public Set<Property> findBy(Integer ax, Integer ay, Integer bx, Integer by) {
-        return Collections.EMPTY_SET;
+    public Set<Property> findBy(Long ax, Long ay, Long bx, Long by) {
+        return repository.find(ax, ay, bx, by);
     }
 
 }

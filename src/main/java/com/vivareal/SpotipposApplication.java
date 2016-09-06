@@ -9,4 +9,5 @@ public class SpotipposApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpotipposApplication.class, args);
 	}
+
 }

@@ -1,7 +1,9 @@
 package com.vivareal.controller.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vivareal.model.Coordinate;
 import com.vivareal.model.Property;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import javax.validation.constraints.NotNull;
@@ -10,21 +12,24 @@ import java.math.BigDecimal;
 public class PropertyRequest {
 
     @NotNull
+    @Length(min = 5, max = 255)
     private String title;
 
     @NotNull
-    @Range(min = 1, max = 1400)
-    private Long x;
+    @Range(min = 0, max = 1400)
+    private Long xPosition;
 
     @NotNull
-    @Range(min = 1, max = 1000)
-    private Long y;
+    @Range(min = 0, max = 1000)
+    private Long yPosition;
 
     @NotNull
+    @Range(min = 1 , max = 9250000)
     private BigDecimal price;
 
     @NotNull
     @NotBlank
+    @Length(min = 1, max = 1000)
     private String description;
 
     @NotNull
@@ -39,12 +44,14 @@ public class PropertyRequest {
     @Range(min = 20 , max = 240)
     private Integer squareMeters;
 
-    public void setX(Long x) {
-        this.x = x;
+    @JsonProperty("x")
+    public void setxPosition(Long xPosition) {
+        this.xPosition = xPosition;
     }
 
-    public void setY(Long y) {
-        this.y = y;
+    @JsonProperty("y")
+    public void setyPosition(Long yPosition) {
+        this.yPosition = yPosition;
     }
 
     public void setTitle(String title) {
@@ -72,14 +79,10 @@ public class PropertyRequest {
     }
 
     public Property toEntity() {
-
-        Coordinate coordinate = new Coordinate(x, y);
-
-
         return new Property(title,
                             price,
                             description,
-                            new Coordinate(x, y),
+                            new Coordinate(xPosition, yPosition),
                             beds,
                             baths,
                             squareMeters);

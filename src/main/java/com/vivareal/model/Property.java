@@ -1,42 +1,21 @@
 package com.vivareal.model;
 
 import com.vivareal.model.exceptions.InvalidCoordinateException;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Set;
-
 import static com.vivareal.model.Province.getProvincesForCoordinate;
 import static java.util.Objects.requireNonNull;
 
 public class Property {
 
     private Long id;
-
-    @NotNull
     private String title;
-
-    @NotNull
     private BigDecimal price;
-
-    @NotNull
     private String description;
-
-    @NotNull
     private Coordinate coordinate;
-
-    @Range(min = 1, max = 5, message = "O número de quartos deve estar entre 1 e 5.")
     private Integer beds;
-
-    @Range(min = 1, max = 4, message = "O número de banheiros deve estar entre 1 e 4.")
     private Integer baths;
-
-    @NotEmpty(message = "O imóvel deve estar em uma província")
     private Set<Province> provinces;
-
-    @Range(min = 20 , max = 240, message = "A área deve estar entre 20 e 240 m2")
     private Integer squareMeters;
 
     public Property() {}
@@ -68,6 +47,14 @@ public class Property {
         });
 
         this.coordinate = requireNonNull(coordinate);
+    }
+
+    public Long getX() {
+        return coordinate.getxPosition();
+    }
+
+    public  Long getY() {
+        return coordinate.getyPosition();
     }
 
     public void setId(Long id) {

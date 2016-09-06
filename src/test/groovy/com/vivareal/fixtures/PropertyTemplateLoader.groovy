@@ -1,4 +1,4 @@
-package com.vivareal.model.templates
+package com.vivareal.fixtures
 
 import br.com.six2six.fixturefactory.Fixture
 import br.com.six2six.fixturefactory.Rule
@@ -7,7 +7,7 @@ import com.vivareal.model.Coordinate
 import com.vivareal.model.Province
 import com.vivareal.model.Property
 
-class RealStateTemplateLoader implements TemplateLoader {
+class PropertyTemplateLoader implements TemplateLoader {
 
     @Override
     void load() {

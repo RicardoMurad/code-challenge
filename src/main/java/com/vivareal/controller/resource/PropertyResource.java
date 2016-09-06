@@ -1,34 +1,29 @@
 package com.vivareal.controller.resource;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.vivareal.model.Coordinate;
 import com.vivareal.model.Property;
-import com.vivareal.model.Province;
-import org.springframework.hateoas.ResourceSupport;
-
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class PropertyResource extends ResourceSupport {
+public class PropertyResource {
 
-    @JsonProperty("id")
-    private Long entityId;
+    private Long id;
     private String title;
     private BigDecimal price;
     private String description;
+
     @JsonProperty("x")
     private Long  xCoordinate;
+    @JsonProperty("y") private Long  yCoordinate;
 
-    @JsonProperty("y")
-    private Long  yCoordinate;
     private Integer beds;
     private Integer baths;
     private Set<String> provinces;
     private Integer squareMeters;
 
     public PropertyResource(Property property) {
-        this.entityId = property.getId();
+        this.id = property.getId();
         this.title = property.getTitle();
         this.price = property.getPrice();
         this.description = property.getDescription();
@@ -38,15 +33,14 @@ public class PropertyResource extends ResourceSupport {
         this.baths = property.getBaths();
         this.provinces = property.getProvinces()
                                     .stream()
-                                    .map(p -> p.toString())
+                                    .map(p -> p.getName())
                                     .collect(Collectors.toSet());
         this.squareMeters = property.getSquareMeters();
     }
 
-    public Long getEntityId() {
-        return entityId;
+    public Long getId() {
+        return id;
     }
-
     public String getTitle() {
         return title;
     }

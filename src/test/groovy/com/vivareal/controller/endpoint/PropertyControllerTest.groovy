@@ -167,7 +167,7 @@ class PropertyControllerTest extends Specification {
     }
 
     void setup() {
-        loadTemplates("com.vivareal.model.templates");
+        loadTemplates("com.vivareal.templates");
         initMocks(this)
         mockMvc = standaloneSetup(controller).build()
     }

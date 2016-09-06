@@ -1,4 +1,10 @@
 package com.vivareal.model.exceptions;
 
 
-public class ValidationException extends RuntimeException {}
+public class ValidationException extends RuntimeException {
+
+    public ValidationException(String message) {
+        super(message);
+    }
+
+}
